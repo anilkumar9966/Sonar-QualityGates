@@ -24,14 +24,16 @@ pipeline{
         sh "mvn sonar:sonar"
         }
         }
-    }
-        stage('Deploy War'){
-            steps{
-                
-              ansiblePlaybook credentialsId: 'deploy_user', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'tomcat.inv', playbook: 'tomcat/tasks/main.yml'
-            }
         }
-    }
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
+        
+       }
 }
             
     
