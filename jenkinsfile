@@ -1,0 +1,38 @@
+pipeline{
+    
+    agent any
+    tools {
+      maven 'Maven'
+    }
+   
+    stages{
+        stage('SCM'){
+            steps{
+                git branch: 'main', url: 'https://github.com/anilkumar9966/Ansible-Demo.git'
+            }
+        }
+        
+        stage('Maven Build'){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        
+        stage('SonarQube analysis'){
+        steps{
+        withSonarQubeEnv('sonarqube-8.9.10'){
+        sh "mvn sonar:sonar"
+        }
+        }
+    }
+        stage('Deploy War'){
+            steps{
+                
+              ansiblePlaybook credentialsId: 'deploy_user', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'tomcat.inv', playbook: 'tomcat/tasks/main.yml'
+            }
+        }
+    }
+}
+            
+    
+     

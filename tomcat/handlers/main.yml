@@ -1,0 +1,5 @@
+---
+# handlers file for tomcat
+- name: restart the tomcat server
+  shell: /usr/local/apache-tomcat-8.5.85/bin/startup.sh && nohup /usr/local/apache-tomcat-8.5.85/bin/shutdown.sh
+
