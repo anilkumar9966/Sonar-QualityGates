@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('SCM'){
             steps{
-                git branch: 'main', url: 'https://github.com/anilkumar9966/Ansible-Demo.git'
+                git branch: 'main', url: 'https://github.com/anilkumar9966/Sonar-QualityGates.git'
             }
         }
         
@@ -32,7 +32,25 @@ pipeline{
               }
             }
           }
-        
+        stage('Deploy war file nexus'){
+            steps{
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'demo',
+                        classifier: '', 
+                        file: '/var/lib/jenkins/workspace/Ansible-Jenkins/target/demo-4.0.0-SNAPSHOT.war',
+                        type: 'war'
+                    ]
+                ], 
+                credentialsId: 'Nexus-admin', 
+                groupId: 'com.domain', 
+                nexusUrl: '43.205.214.10:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'Demo-Maven-Webapp/', 
+                version: '4.0.0-SNAPSHOT'
+            }
+        }
        }
 }
             
