@@ -44,7 +44,7 @@ pipeline{
                 ], 
                 credentialsId: 'Nexus-admin', 
                 groupId: 'com.domain', 
-                nexusUrl: '43.205.214.10:8081', 
+                nexusUrl: '65.2.169.42:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'Demo-Maven-Webapp/', 
