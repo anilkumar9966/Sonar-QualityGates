@@ -7,13 +7,25 @@
   <version>4.0.0</version>
   <name>Demo Maven Webapp</name>
   <url>https://github.com/tongueroo/demo-java</url>
-  <build>
+  <distributionManagement>
+    <repository>
+        <id>devops</id>
+        <name>Demo-Maven-Webapp-release</name>
+        <url>http://3.109.181.125:8081/repository/Demo-Maven-Webapp/</url>
+    </repository>
+    <snapshotRepository>
+        <id>devops</id>
+        <name>Demo-Maven-Webapp-release</name>
+        <url>http://3.109.181.125:8081/repository/Demo-Maven-Webapp/</url>
+    </snapshotRepository>
+  </distributionManagement>
+ <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
+	<version>3.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -47,16 +59,4 @@
         <version>3.1.0</version>
     </dependency>
   </dependencies>
-  <distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>a0w3ijykbid8a-artifactory-primary-0-releases</name>
-        <url>https://arpitademo.jfrog.io/artifactory/maven-demo-artifact</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>a0w3ijykbid8a-artifactory-primary-0-snapshots</name>
-        <url>https://arpitademo.jfrog.io/artifactory/maven-demo-artifact</url>
-    </snapshotRepository>
-</distributionManagement>
-</project>
+ </project>
