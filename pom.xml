@@ -11,12 +11,12 @@
     <repository>
         <id>devops</id>
         <name>Demo-Maven-Webapp-release</name>
-        <url>http://3.109.181.125:8081/repository/Demo-Maven-Webapp/</url>
+        <url>http://13.232.230.106:8081/repository/Demo-Maven-Webapp/</url>
     </repository>
     <snapshotRepository>
         <id>devops</id>
         <name>Demo-Maven-Webapp-release</name>
-        <url>http://3.109.181.125:8081/repository/Demo-Maven-Webapp/</url>
+        <url>http://13.232.230.106:8081/repository/Demo-Maven-Webapp/</url>
     </snapshotRepository>
   </distributionManagement>
  <build>
@@ -32,8 +32,9 @@
         </configuration>
       </plugin>
       <plugin>
+	<groupId>org.apache.maven.plugins</groupId>   
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.3.2</version>
       </plugin>
     </plugins>
   </build>
